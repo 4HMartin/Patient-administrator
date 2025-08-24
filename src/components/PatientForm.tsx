@@ -33,7 +33,7 @@ export default function PatientForm() {
                         type="text"
                         placeholder="Patient's name"
                         {...register('name', {
-                            required: "Patient's name is mandatory."
+                            required: "Patient's name is mandatory"
                         })}
                     />
 
@@ -51,7 +51,14 @@ export default function PatientForm() {
                         className="w-full p-3  border border-gray-100"
                         type="text"
                         placeholder="Owner's name"
+                        {...register('caretaker', {
+                            required: "Owner's name is mandatory"
+                        })}
                     />
+
+                    {errors.caretaker && (
+                        <Error>{errors.caretaker?.message?.toString()}</Error>
+                    )}
                 </div>
 
                 <div className="mb-5">
@@ -63,7 +70,18 @@ export default function PatientForm() {
                         className="w-full p-3  border border-gray-100"
                         type="email"
                         placeholder="Registration email"
+                        {...register('email', {
+                            required: "Email is mandatory",
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Email not valid"
+                            }
+                        })}
                     />
+
+                    {errors.email && (
+                        <Error>{errors.email?.message?.toString()}</Error>
+                    )}
                 </div>
 
                 <div className="mb-5">
@@ -74,7 +92,14 @@ export default function PatientForm() {
                         id="date"
                         className="w-full p-3  border border-gray-100"
                         type="date"
+                        {...register("date",{
+                            required: "Registration date is mandatory"
+                        })}
                     />
+
+                    {errors.date && (
+                        <Error>{errors.date?.message?.toString()}</Error>
+                    )}
                 </div>
 
                 <div className="mb-5">
@@ -85,7 +110,14 @@ export default function PatientForm() {
                         id="symptoms"
                         className="w-full p-3  border border-gray-100"
                         placeholder="Patient's symptoms"
-                    ></textarea>
+                        {...register("symptoms",{
+                            required: "Symptoms description is mandatory"
+                        })}
+                    />
+
+                    {errors.symptoms && (
+                        <Error>{errors.symptoms?.message?.toString()}</Error>
+                    )}
                 </div>
 
                 <input
