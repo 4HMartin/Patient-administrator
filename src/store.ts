@@ -1,7 +1,6 @@
 import {create} from 'zustand'
 import type { DraftPatient, Patient } from './types'
 import { v4 as uuidv4 } from 'uuid'
-
 /** The state and its actions must be defined within the state type */
 type PatientState = {
     patients: Patient[]
